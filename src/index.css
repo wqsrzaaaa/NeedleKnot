@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+
+html, body {
+  overflow-x: hidden;
+}
+body{
+  width: 100%;
+  background: #171717;
+  color: white;
+  overflow: hidden;
+}
+::selection{
+ color: rgb(255, 60, 0);
+}
+body {
+  font-family: "Atkinson Hyperlegible Mono", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@media (max-width : 1200px) {
+  #nav-header #nav-bar{
+     display: none;
+  }
+  #main #footer{
+      height: 70vh;
+  }
+  #footer #inside-footer{
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0;
+  }
+}
+
+#Text{
+  text-shadow:0px 0px 30px rgb(251, 35, 6);
+}
+
+#HeaderHover{
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 40px ;
+  position: relative;
+  z-index: 3;
+}
+#HeaderHover::before{
+  content: '';
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: rgb(210, 82, 3);
+ position: absolute;
+ top: 100%;
+ left : 0
+}
+#HeaderHover:hover::before{
+  top: 0;
+  transition: .3s;
+}
+#HeaderHover:hover{
+  text-decoration: underline;
+}
+#AccountsHover:hover{
+  scale: 1.2;
+  transition: .3s;
+}
+.decoration{
+  text-decoration: underline;
+
+}
+
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#Ace::before{
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: rgb(94, 94, 94);
+  position: absolute;
+  bottom: 0%;
+  left: -100%;
+  z-index: 2;
+}
+.ParentAce:hover #Ace::before{
+  left: 0;
+  transition: .3s;
+}
+.Stars{
+ color: rgb(255, 251, 0);
+ filter: drop-shadow(0px 0px 5px yellow);
+}
+.Span-Star{
+  color: white;
+}
+.text-shadow{
+  filter: drop-shadow(2px 2px 6px rgba(255, 223, 0, 0.8));
+}
