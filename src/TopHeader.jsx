@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { HashRouter  as Router, Link, Route, Routes } from "react-router-dom";
+import { HashRouter  as Router, Link, Route, Routes, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { FiShoppingBag } from "react-icons/fi";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
@@ -21,6 +21,7 @@ const TopHeader = ({ shirts, category, plain, Hoodie, jecket, setsearch, search 
   const [hiddenOpacity, setHiddenOpacity] = useState(1);
   const [menuOpen, setMenuOpen] = useState(false);
   const { setCount } = useContext(CartContext);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,7 +74,8 @@ const TopHeader = ({ shirts, category, plain, Hoodie, jecket, setsearch, search 
             <div className="w-full flex items-center justify-center"><h3 className="text-center">Pakistan First Anime Embroidered Brand</h3></div>
           </Slider>
         </div>
-
+        
+        
         <div className="flex bg-black w-[90%] absolute left-1/2 top-1/3  -translate-x-1/2 rounded-full items-center justify-between px-4 md:px-8 lg:px-16 py-3 md:py-4">
           <div className="flex items-center">
             <img className="w-[50px] h-[50px]" src="https://needleandknot.online/cdn/shop/files/logo-modified_6f9455bb-5b8a-4e32-966d-504163f2aa75.png?v=1706389444&width=50" alt="Logo" />
@@ -92,7 +94,7 @@ const TopHeader = ({ shirts, category, plain, Hoodie, jecket, setsearch, search 
               <FiShoppingBag className="cursor-pointer" />
               <p className="absolute -top-2 -right-2 bg-orange-400 rounded-full w-6 h-6 flex items-center justify-center text-sm">{setCount}</p>
             </Link>
-            <CiMenuFries onClick={()=>setSideBarScale(1)} className="md:hidden block" />
+            <CiMenuFries onClick={()=>setSideBarScale(1)} className="lg:hidden block" />
           </div>
         </div>
 

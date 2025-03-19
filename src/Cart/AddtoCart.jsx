@@ -33,10 +33,12 @@ const AddtoCart = () => {
       .map((product, index) => 
         `Product ${index + 1}: 
         Name: ${product.name}, 
+        Address : ${Address}
         Category: ${product.category}, 
         Quantity: ${product.quantity}, 
         Size: ${product.size}, 
-        Price: ${product.price}`
+        Price: ${product.price}
+        `
       )
       .join("\n\n"); 
   
@@ -83,6 +85,9 @@ const AddtoCart = () => {
   const [OrderCompleted, setOrderCompleted] = useState(false)
    const [Email, setEmail] = useState('')
    const [Contact, setContact] = useState('')
+   const [Address, setAddress] = useState('')
+  
+
 
   return (
     <div className="w-full !pt-30 !p-4">
@@ -97,13 +102,18 @@ const AddtoCart = () => {
                         setPayment(false))} className="absolute top-5 left-[80%] cursor-pointer bg-red-400 flex items-center justify-center w-[30px] h-[30px]">X</div>
                 <form onSubmit={onSubmit} className="w-full flex flex-col gap-3">
                     {cart.map((product, index) => (
-                      <div key={index} className="w-[80vh] flex flex-col gap-3">
-                        <p className="text-2xl font-bold">{product.name}</p>
-                        <div className="flex gap-9">
+                      <div key={index} className="md:w-[80vh] w-[40vh] flex items-center  gap-3">
+                       <div>
+                        <img src={product.img} className="w-[90px]" alt="" />
+                       </div>
+                       <div>
+                       <p className="text-2xl font-bold">{product.name}</p>
+                        <div className="flex flex-col md:flex-row  gap-2">
                           <p>Quantity: {product.quantity}</p>
                           <p>Size: {product.size}</p>
                         </div>
                         <p>Price: {product.price}</p>
+                       </div>
                       </div>
                     ))}
 
@@ -111,7 +121,9 @@ const AddtoCart = () => {
                   `Name: ${product.name}, Category: ${product.category}, Quantity: ${product.quantity}, Size: ${product.size}, Price: ${product.price}`
                 ).join("\n\n")} />
 
-                <input
+              {result ? <p>{result}</p> :
+               <>
+                 <input
                   name="email"
                   type="email"
                   required
@@ -129,6 +141,15 @@ const AddtoCart = () => {
                   value={Contact}
                   onChange={(e) => setContact(e.target.value)}
                 />
+                <input
+                  name="Address"
+                  type="text"
+                  required
+                  className="!p-3 border-1"
+                  placeholder="Full Address"
+                  value={Address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
 
                 <p>Total price: {totalPrice}</p>
                 <p>Cash on delivery</p>
@@ -137,6 +158,7 @@ const AddtoCart = () => {
                  type="submit" className="!p-3 bg-green-500 w-[200px] hover:bg-black">
                   Complete Order
                 </button>
+               </>}
               </form>
 
 

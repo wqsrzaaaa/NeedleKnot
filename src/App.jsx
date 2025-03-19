@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TopHeader from "./TopHeader";
 import Searchdiv from "./Searchdiv";
 import { Context } from "./Context";
 import { CartProvider } from "./Cart/CartContext";
+import { useFormState } from "react-dom";
+import { div } from "framer-motion/client";
 
 const App = () => {
   const [SearchIcon, setSearchIcon] = useState(false)
@@ -54,21 +56,20 @@ const App = () => {
    const shirt = allProducts.filter((p)=> p.category === 'Shirt')
    const hoodie = allProducts.filter((p)=> p.category === 'Hoodie')
    const category = allProducts.filter((p)=> p.category === 'Plain')
-  
+
   return (
     <>
-      <CartProvider>
-        <Context>
-          < TopHeader category={category} plain = {category} Hoodie={hoodie} shirts={shirt} jecket={Jecket} search = {SearchIcon} setsearch={setSearchIcon} />
-          <div className="w-full relative z-3 ">
-          {SearchIcon ? <Searchdiv setSearchIcon={setSearchIcon} filterproducts={filter} setInpVal={setInpVal} InpVal={InpVal} /> 
-          :
-            ''
-          }
-          </div>
-        </Context>
-      </CartProvider>
-      
+    <CartProvider>
+    <Context>
+      < TopHeader category={category} plain = {category} Hoodie={hoodie} shirts={shirt} jecket={Jecket} search = {SearchIcon} setsearch={setSearchIcon} />
+      <div className="w-full relative z-3 ">
+      {SearchIcon ? <Searchdiv setSearchIcon={setSearchIcon} filterproducts={filter} setInpVal={setInpVal} InpVal={InpVal} /> 
+      :
+        ''
+      }
+      </div>
+    </Context>
+  </CartProvider>
     </>
   );
 };

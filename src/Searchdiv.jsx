@@ -33,16 +33,16 @@ const Searchdiv = ({ setInpVal, filterproducts, setSearchIcon , InpVal }) => {
                   key={index}
                   onClick={() => {
                     if (item === "T-Shirt") {
-                      window.location.href = "/#/tshirt";
+                      window.location.href = "NeedleKnot/#/tshirt";
                       setSearchIcon(false)
                     }else if(item === 'Hoodies'){
-                      window.location.href = '/#/hoodies'
+                      window.location.href = '/NeedleKnot/#/hoodies'
                       setSearchIcon(false)
                     }else if(item === 'Jackets'){
-                      window.location.href = '/#/versityjec'
+                      window.location.href = '/NeedleKnot/#/versityjec'
                       setSearchIcon(false)
                     }else{
-                      window.location.href = '/#/plain'
+                      window.location.href = '/NeedleKnot/#/plain'
                       setSearchIcon(false)
                     }
                   }}
@@ -62,16 +62,16 @@ const Searchdiv = ({ setInpVal, filterproducts, setSearchIcon , InpVal }) => {
               <div  
               onClick={() => {
                 if (item.category === "Shirt") {
-                  window.location.href = "/#/tshirt";
+                  window.location.href = "/NeedleKnot/#/tshirt";
                   setSearchIcon(false)
                 }else if(item.category === 'Hoodie'){
-                  window.location.href = '/#/hoodies'
+                  window.location.href = '/NeedleKnot/#/hoodies'
                   setSearchIcon(false)
                 }else if(item.category === 'jacket'){
-                  window.location.href = '/#/versityjec'
+                  window.location.href = '/NeedleKnot/#/versityjec'
                   setSearchIcon(false)
                 }else{
-                  window.location.href = '/#/plain'
+                  window.location.href = '/NeedleKnot/#/plain'
                   setSearchIcon(false)
 
                 }

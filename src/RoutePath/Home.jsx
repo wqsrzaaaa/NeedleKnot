@@ -70,7 +70,7 @@ const Home = ({products}) => {
       <div 
       style={{scale : Scale , width : width }}
       className=" h-[200px]
-       right-[20px] md:right-[90px] top-[65%] md:top-[60%]
+       right-[20px] md:right-[90px] top-[60%] md:top-[60%]
        flex-col items-center gap-2 bg-white overflow-hidden flex  fixed transition-all duration-300 rounded-2xl  z-99">
         <div className="w-full flex flex-col items-center gap-3 justify-center h-[150px] text-white bg-green-800">
           <FaWhatsappSquare className="text-6xl rounded-full"/>
@@ -87,10 +87,6 @@ const Home = ({products}) => {
         
          />
       </div>
-
-
-
-
 
            <FirstPage />
             <div className='w-full '>

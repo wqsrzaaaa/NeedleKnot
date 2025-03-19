@@ -17,6 +17,8 @@ const Checkout = () => {
   const [Quantity, setQuantity] = useState(1)
   const [Payment, setPayment] = useState(false)
 
+  
+
   const decrement = ()=>{
     if(Quantity > 1){
       setQuantity((prev)=>prev - 1)
@@ -56,6 +58,7 @@ const Checkout = () => {
    }
 
    const [Email, setEmail] = useState('')
+   const [address, setaddress] = useState('')
    const [Contact, setContact] = useState('')
    const [AddReview, setAddReview] = useState(Number(product.rating));
    const [Scaling, setScaling] = useState(false)
@@ -65,6 +68,7 @@ const Checkout = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Order Sending....");
+    
     const formData = new FormData(event.target);
 
     formData.append("access_key", "3503e0f4-fe1b-4ab2-9d43-613d84938884");
@@ -116,7 +120,19 @@ const Checkout = () => {
       addToCart(cartItem); 
     };
 
-    
+
+    const [WatchlistScale, setWatchlistScale] = useState(0)
+    const [Watchlisttop, setWatchlisttop] = useState('-50')
+    const WatchListTrue = ()=>{
+      setWatchlistScale(1)
+      setWatchlisttop('140')
+      setTimeout(() => {
+        setWatchlistScale(0)
+        setWatchlisttop('-50')
+      }, 3000);
+
+    }
+
 
   return (
     <>
@@ -130,20 +146,29 @@ const Checkout = () => {
           <img className="w-[200px] rounded-2xl h-[350px]" src={product.img} alt="" />
           <div className="w-[35vh] md:w-[80vh] flex flex-col gap-3">
         
-                <form className="w-full flex flex-col gap-3" onSubmit={onSubmit}>
-                  <p className="text-2xl font-bold">{product.name}</p>
+          <form className="w-full flex !pb-5 flex-col gap-3" onSubmit={onSubmit}>
+             
+
+              <p>Price: {product.price}</p>
+              <p>Total price: {discount()}</p>
+              <p>Cash on delivery</p>
+
+              {result ? <p className="text-white">{result}</p>
+              :
+              <>
+                <p className="text-2xl font-bold">{product.name}</p>
                   <div className="flex gap-9">
                     <p>Quantity: {Quantity}</p>
                     <p>Size: {SelectedOne}</p>
                   </div>
-  
+
                   <input type="hidden" name="product_name" value={product.name} />
                   <input type="hidden" name="product_cetegory" value={product.category} />
                   <input type="hidden" name="quantity" value={Quantity} />
                   <input type="hidden" name="size" value={SelectedOne} />
                   <input type="hidden" name="price" value={product.price} />
                   <input type="hidden" name="total_price" value={product.price} />
-  
+
                   <input
                     name="email"
                     type="email"
@@ -157,20 +182,27 @@ const Checkout = () => {
                     name="contact"
                     type="number"
                     required
-                    className="!p-3 border-1 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-moz-appearance:textfield]"
+                    className="!p-3 border-1"
                     placeholder="Contact No."
                     value={Contact}
                     onChange={(e) => setContact(e.target.value)}
                   />
-  
-                  <p>Price: {product.price}</p>
-                  <p>Total price: {discount()}</p>
-                  <p>Cash on delivery</p>
-  
-                  <button type="submit"  className="!p-3 bg-green-500 w-[200px] hover:bg-black">
-                    Complete Order
-                  </button>
-                </form>
+                  <input
+                    name="address"
+                    type="text"
+                    required
+                    className="!p-3 border-1"
+                    placeholder="Address"
+                    value={address}
+                    onChange={(e) => setaddress(e.target.value)}
+                  />
+                  <button type="submit" className="!p-3 bg-green-500 w-[200px] hover:bg-black">
+                  Complete Order
+                </button>
+              </>
+              }
+            </form>
+
           </div>
           </>
         )
@@ -208,13 +240,20 @@ const Checkout = () => {
           </div>
           <button  onClick={()=> (
             handleAddToCart(),
-            addCount()
+            addCount(),
+            WatchListTrue()
             )}  className="bg-blue-500 w-[30vh] md:w-[100vh] text-white p-4 mt-4">Add to watchlist</button>
           <button onClick={()=> setPayment(Payment ? false : true)} className="bg-green-500 w-[30vh] md:w-[100vh] text-white p-4 mt-4">Proceed to Payment</button>
         </div>
       </div>
       <Review setScaling={setScaling} Scaling = {Scaling} product = {product} />
     
+
+        <div style={{scale : WatchlistScale , top : `${Watchlisttop}px`}} className="w-[50vh] !pb-4 !pt-2 transition-all duration-300 md:-translate-y-0 -translate-y-10  bg-zinc-800 gap-4 flex flex-col items-center fixed right-2 z-999">
+          <img className="w-[60%] h-[30vh] object-cover" src={product.img} alt="" />
+          <p className="w-[90%] text-center"><span className="text-orange-500">{product.name}</span> is added to your cart</p>
+        </div> 
+
     </>
   );
 };

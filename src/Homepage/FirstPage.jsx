@@ -29,9 +29,9 @@ const FirstPage = () => {
   return (
     <div className="w-full h-[80vh] md:h-screen flex z-3 items-center relative justify-center">
     <img
-      className="w-full h-full z-[-1] absolute top-0 left-0"
+      className="w-full h-full z-[-1] bg-black absolute top-0 left-0"
       src="https://needleandknot.online/cdn/shop/files/BGBYCWS-ezgif.com-video-to-gif-converter.gif?v=1708769550&width=1500"
-      alt=""
+      alt="img-gif"
     />
     <div className="items-center w-[90%] text-center md:w-[60%] flex flex-col gap-7">
       <div className=" overflow-hidden p-5 relative rounded-full text-white">
