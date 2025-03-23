@@ -22,7 +22,7 @@ const Swiperjs = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-full  px-4 sm:px-0"> 
+    <div className="w-full max-w-full  md:px-4 "> 
       <Swiper
         modules={[Pagination]}
         slidesPerView={1}  
@@ -41,7 +41,7 @@ const Swiperjs = () => {
           <SwiperSlide key={index} className="flex justify-center">
             <Link to={'/versityjec'}>
               <div
-                className={`w-full max-w-[300px] !ml-12 sm:max-w-[350px] h-[550px] flex flex-col items- relative transition-all duration-300 
+                className={`w-full max-w-[300px] !ml-7  md:!ml-12 sm:max-w-[350px] h-[550px] flex flex-col items- relative transition-all duration-300 
                   ${index === activeIndex ? "scale-105" : "scale-95"}`}
               >
                 <div className="w-full h-[400px] rounded-2xl ">
